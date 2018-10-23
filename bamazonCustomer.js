@@ -76,7 +76,7 @@ function buyItem() {
             ])
             // CHECK ITEM ID AGAINST INVENTORY ARRAY
             .then(function(answer) {
-                var chosenID = answer.itemPrompt;
+                var chosenID = answer.itemPrompt - 1;
                 var chosenProduct = res[chosenID];
                 var chosenQuantity = answer.quantityPrompt;
                 console.log(chosenID);
@@ -86,7 +86,6 @@ function buyItem() {
 
                 } else {
                     console.log('Sorry, we have an insufficient number of those in stock.');
-                    showStock();
                 }
             })
     });
