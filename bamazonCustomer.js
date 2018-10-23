@@ -46,8 +46,23 @@ function showStock() {
 }
 // -------------------------------BUY ITEM-------------------------------
 function buyItem() {
-    console.log("------------------------------------------------------------------------")
-    console.log("What do you want to buy?");
+    connection.query('SELECT * FROM products', function (err, res) {
+        console.log("------------------------------------------------------------------------");
+        inquirer
+            .prompt({
+                name: "buyItemPrompt",
+                type: "rawlist",
+                choices: function () {
+                    var inventory = [];
+                    for (i = 0; i < res[i].length; i++) {
+                        inventory.push(res[i].length);
+                    }
+                    return inventory;
+                },
+                message: "Which item would you like you like to buy?"
+            })
+    });
+    
 }
 
 // ------------------------------------------------------------------------
